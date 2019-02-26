@@ -324,11 +324,11 @@ String[] words=string.split(",\n|\\s|,");
 
 		public int indexOf(T t) {
 			List sortList=getSortedList();
-			search(sortedList, t, 0, sortedList.size());
+			int x=search(sortedList, t, 0, sortedList.size());
 			
 			
 			
-			return 0;
+			return x;
 		}
 		public int search(List sortList, T t, int start, int end ) {
 			
@@ -482,20 +482,22 @@ String[] words=string.split(",\n|\\s|,");
 	 * @param l
 	 * @return
 	 */
-	static ArrayList<Integer> PrimeArray= new ArrayList<Integer>();
-	public static List<Integer> calculatePrimeFactorsOf(long l) {
-		
-		int copy=0;
-		for(int i=2; i<l;i++) {
+	static ArrayList<Long> PrimeArray= new ArrayList<Long>();
+	public static List<Long> calculatePrimeFactorsOf(long l) {
+		if (l==2L) {
+			PrimeArray.add(2L);
+		}
+		Long copy=0L;
+		for(Long i=2L; i<l;i++) {
 			if (l%i==0) {
-				copy=(int) (l/i);
+				copy= (l/i);
 				System.out.println("t"+i);
-				if(i==2) {
+				if(i==2L) {
 					PrimeArray.add(i);
 				}else {
 					factors(i);
 				}
-				if(copy==2) {
+				if(copy==2L) {
 					PrimeArray.add(copy);
 				}else {
 					factors(copy);
@@ -508,29 +510,30 @@ String[] words=string.split(",\n|\\s|,");
 		return PrimeArray;
 		
 	}
-	public static  void factors(int num) {
-	int copy=0;
+	public static  void factors(Long num) {
+	Long copy=0L;
 		
-		for(int i=2; i<num;i++) {
+		for(Long i=2L; i<num;i++) {
 			if (num%i==0) {
-				copy=(int) (num/i);
-				if(i==2) {
+				copy= (num/i);
+				if(i==2L) {
 					PrimeArray.add(i);
 				}else {
 					factors(i);
 				}
-				if(copy==2) {
+				if(copy==2L) {
 					PrimeArray.add(copy);
 				}else {
 					factors(copy);
 				}
 				break;
 			}
-			if (i==(num-1) && num%i!=0) {
+			if (i==(num-1L) && num%i!=0L) {
 				PrimeArray.add(num);
 			}
 			}	
-	}
+				
+		}
 
 	/**
 	 * 11. Create an implementation of the rotational cipher, also sometimes called
